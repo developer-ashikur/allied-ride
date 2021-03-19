@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../App';
 
 const Header = () => {
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     return (
         <Navbar expand="lg">
             <Container>
@@ -14,7 +16,10 @@ const Header = () => {
                         <Nav.Link as={Link} to='/destination'>Destination</Nav.Link>
                         <Nav.Link>Blog</Nav.Link>
                         <Nav.Link>Contact</Nav.Link>
-                        <Link to='/login' className='btn btn-danger'>Login</Link>
+                        {
+                            loggedInUser.isSignedIn ? <Nav.Link>{loggedInUser.email}</Nav.Link> : <Link to='/login' className='btn btn-danger'>Login</Link> 
+                        }
+                        
                     </Nav>
                 </Navbar.Collapse>
             </Container>

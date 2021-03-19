@@ -16,7 +16,15 @@ import Destination from './components/Destination/Destination';
 export const UserContext = createContext();
 
 function App() {
-  const [loggedInUser, setLoggedInUser] = useState({});
+  const [loggedInUser, setLoggedInUser] = useState(
+    {
+      isSignedIn: false,
+      name: '',
+      email: '',
+      password: '',
+      error: ''
+    }
+  );
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
       <Router>
@@ -27,12 +35,12 @@ function App() {
           <Route path='/login'>
             <Login />
           </Route>
-          {/* <PrivateRoute path='/destination/:id'>
+          <PrivateRoute path='/destination/:id'>
             <Destination />
-          </PrivateRoute> */}
-          <Route path='/destination/:id'>
+          </PrivateRoute>
+          {/* <Route path='/destination/:id'>
             <Destination />
-          </Route>
+          </Route> */}
           <Route>
             <h1 className='text-center text-danger'>404 Page Not Found!</h1>
           </Route>
