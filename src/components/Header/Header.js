@@ -8,7 +8,7 @@ const Header = () => {
     return (
         <Navbar expand="lg">
             <Container>
-                <Navbar.Brand as={Link} to='/'><h2>Allied Ride</h2></Navbar.Brand>
+                <Navbar.Brand as={Link} to='/'><h2 className='font-italic text-danger'>Allied Ride</h2></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto">

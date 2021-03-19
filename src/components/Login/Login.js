@@ -96,7 +96,7 @@ const Login = () => {
             <Header />
             <Container>
                 <hr />
-                <div className='w-md-50 mx-auto border rounded p-5 shadow'>
+                <div className='col-md-6 mx-auto border rounded p-5 shadow'>
                     <h2>{newUser ? 'Login' : 'Create an account'}</h2>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         {
