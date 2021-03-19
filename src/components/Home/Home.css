@@ -1,0 +1,11 @@
+.home{
+    background: url(../../images/Bg.png) center no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+@media only screen and (max-width: 1170px) {
+    .home {
+        height: auto;
+    }
+  }
