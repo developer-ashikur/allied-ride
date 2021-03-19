@@ -2,8 +2,7 @@ import './App.css';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { createContext } from 'react';
@@ -38,9 +37,6 @@ function App() {
           <PrivateRoute path='/destination/:id'>
             <Destination />
           </PrivateRoute>
-          {/* <Route path='/destination/:id'>
-            <Destination />
-          </Route> */}
           <Route>
             <h1 className='text-center text-danger'>404 Page Not Found!</h1>
           </Route>

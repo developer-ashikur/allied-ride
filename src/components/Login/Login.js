@@ -25,12 +25,9 @@ const Login = () => {
     let { from } = location.state || { from: { pathname: "/" } };
 
     const onSubmit = data => {
-        console.log(data);
         if(!newUser && watch('password') === watch('confirmPassword')){
         firebase.auth().createUserWithEmailAndPassword(data.email, data.password)
         .then(res => {
-          // Signed in 
-          console.log(res);
           const newUserInfo = { ...loggedInUser };
           newUserInfo.error = '';
           newUserInfo.email = res.user.email;
@@ -41,15 +38,12 @@ const Login = () => {
         .catch((error) => {
           const newUserInfo = { ...loggedInUser };
           newUserInfo.error = error.message;
-          console.log(error);
           setLoggedInUser(newUserInfo);
         });
     }
     if (newUser && data.email && data.password) {
       firebase.auth().signInWithEmailAndPassword(data.email, data.password)
         .then(res => {
-          // Signed in
-          console.log(res);
           const newUserInfo = { ...loggedInUser };
           newUserInfo.error = '';
           newUserInfo.email = res.user.email;
@@ -60,7 +54,6 @@ const Login = () => {
         .catch((error) => {
             const newUserInfo = { ...loggedInUser };
             newUserInfo.error = error.message;
-            console.log(error);
             setLoggedInUser(newUserInfo);
         });
      }
@@ -87,7 +80,6 @@ const Login = () => {
       .catch(error => {
         const newUserInfo = { ...loggedInUser };
         newUserInfo.error = error.message;
-        console.log(error);
         setLoggedInUser(newUserInfo);
       })
     }
