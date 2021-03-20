@@ -16,7 +16,7 @@ export const fakeData = [
     },
     {
         id : 4,
-        rideName : 'TRAIN',
+        rideName : 'METRO',
         image : 'https://i.ibb.co/wRFTbCn/Group.png'
     }
 ]

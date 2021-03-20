@@ -5,8 +5,12 @@ import { fakeData } from '../../fakeData';
 import DestinationDetails from '../DestinationDetails/DestinationDetails';
 import Header from '../Header/Header';
 import './Destination.css';
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
-import { MapContainer } from '../GoogleMap/GoogleMap';
+import {
+    withScriptjs,
+    withGoogleMap,
+    GoogleMap,
+    Marker,
+} from "react-google-maps";
 
 const Destination = () => {
     const [destination, setDestination] = useState({
@@ -27,13 +31,23 @@ const Destination = () => {
         newDestination[e.target.name] = e.target.value;
         setDestination(newDestination);
     }
+    const MapWithAMarker = withScriptjs(withGoogleMap(props =>
+        <GoogleMap
+            defaultZoom={8}
+            defaultCenter={{ lat: -34.397, lng: 150.644 }}
+        >
+            <Marker
+                position={{ lat: -34.397, lng: 150.644 }}
+            />
+        </GoogleMap>
+    ));
     return (
         <div>
             <Header />
             <Container>
                 <hr />
                 <Row>
-                    <div className="col-md-6 g-4">
+                    <div className="col-md-6 g-4 my-3">
                         <div className="destination-form p-4 rounded">
                             {
                                 !search &&
@@ -69,8 +83,13 @@ const Destination = () => {
                             }
                         </div>
                     </div>
-                    <div className="col-md-6 g-4">
-                        <MapContainer></MapContainer>
+                    <div className="col-md-6 g-4 my-3">
+                        <MapWithAMarker
+                            googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDU5AL0YQHz2kS6vZwyYJKDZtEbICHImA8&v=3.exp&libraries=geometry,drawing,places"
+                            loadingElement={<div style={{ height: `100%` }} />}
+                            containerElement={<div style={{ height: `400px` }} />}
+                            mapElement={<div style={{ height: `100%` }} />}
+                        />
                     </div>
                 </Row>
             </Container>

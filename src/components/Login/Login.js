@@ -60,7 +60,7 @@ const Login = () => {
     
         else{
             const newUserInfo = {...loggedInUser};
-            newUserInfo.error = 'Password did not matched!';
+            newUserInfo.error = 'Password did not match!';
             setLoggedInUser(newUserInfo);
         }
     }
@@ -95,7 +95,7 @@ const Login = () => {
                             !newUser && <input className='form-control my-3 rounded-pill' name="name" type='text' placeholder='Name' ref={register} />
                         }
 
-                        <input name="email" className='form-control my-3 rounded-pill' placeholder='Email' ref={register({ required: true })} />
+                        <input name="email" className='form-control my-3 rounded-pill' placeholder='Email' ref={register({ required: true, pattern: /\S+@\S+\.\S+/ })} />
                         {errors.email && <span className='text-danger'>This field is required</span>}
 
                         <input name="password" className='form-control my-3 rounded-pill' type='password' placeholder='Password' ref={register({ required: true, pattern: /\d/, min: 8 })} />
